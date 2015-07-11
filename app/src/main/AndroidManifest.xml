@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.althink.android.ossw.plugins.tasker">
+
+    <uses-permission android:name="net.dinglisch.android.tasker.PERMISSION_RUN_TASKS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <!--<activity-->
+            <!--android:name=".TaskerPluginSettingsActivity"-->
+            <!--android:label="@string/plugin_name">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="com.althink.android.ossw.plugins.tasker.config" />-->
+                <!--<category android:name="android.intent.category.DEFAULT" />-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
+
+        <provider
+            android:name=".TaskerPluginContentProvider"
+            android:authorities="com.althink.android.ossw.plugins.tasker"
+            android:exported="true"
+            android:syncable="false"
+            android:enabled="true"
+            android:label="@string/plugin_name"
+            ><meta-data android:name="com.althink.android.ossw.plugin" android:value="true"></meta-data>
+        </provider>
+
+        <service
+            android:name=".TaskerPluginService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.althink.android.ossw.plugins.tasker" />
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>
